@@ -5,6 +5,8 @@
 		<title>"ProfessorVote.com"</title>
 		<!-- Le styles -->
 		<link href="../css/bootstrap.css" rel="stylesheet">
+		<link href="../css/bootstrap-responsive.css" rel="stylesheet">
+		<link href="../Pulse/assets/css/pulse.css" rel="stylesheet">
 		<style>
 			body {
 				padding-top: 60px;
@@ -14,7 +16,6 @@
 				border: 0;
 			}
 		</style>
-		<link href="../css/bootstrap-responsive.css" rel="stylesheet">
 	</head>
 	<body>
 		<div class="navbar navbar-fixed-top">
@@ -22,8 +23,8 @@
 				<div class="container">
 					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a>
 					<?php
-					$homeHeaderAttributes = array('id' => 'homeHeader', 'class' => 'brand');
-					echo anchor('home', 'ProfessorVote.com', $homeHeaderAttributes);
+                    $homeHeaderAttributes = array('id' => 'homeHeader', 'class' => 'brand');
+                    echo anchor('home', 'ProfessorVote.com', $homeHeaderAttributes);
 					?>
 					<div class="nav-collapse">
 						<form class="form-inline pull-right" style="display: inline; margin-bottom:
@@ -36,8 +37,8 @@
 							<ul class="nav">
 								<li>
 									<?php
-									$loginHeaderAttributes = array('id' => 'loginHeader');
-									echo anchor('login', 'Login', $loginHeaderAttributes);
+                                    $loginHeaderAttributes = array('id' => 'loginHeader');
+                                    echo anchor('login', 'Login', $loginHeaderAttributes);
 									?>
 								</li>
 							</ul>

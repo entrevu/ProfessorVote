@@ -1,5 +1,5 @@
 <?php
-
+include('Pulse/Pulse.vote.class.php');
 class CollegeSearch extends CI_Controller {
 
 	function index() {
