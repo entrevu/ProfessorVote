@@ -17,12 +17,12 @@
     # Enforce www
     # If you have subdomains, you can add them to
     # the list using the "|" (OR) regex operator
-    RewriteCond %{HTTP_HOST} !^(www|subdomain) [NC]
-    RewriteRule ^(.*)$ http://localhost/$1 [L,R=301]
+    #RewriteCond %{HTTP_HOST} !^(www|subdomain) [NC]
+    #RewriteRule ^(.*)$ http://localhost/$1 [L,R=301]
  
     # Enforce NO www
-    #RewriteCond %{HTTP_HOST} ^www [NC]
-    #RewriteRule ^(.*)$ http://localhost/$1 [L,R=301]
+    RewriteCond %{HTTP_HOST} ^www [NC]
+    RewriteRule ^(.*)$ http://localhost/$1 [L,R=301]
  
     ###
  
