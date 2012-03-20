@@ -31,7 +31,7 @@ class Login extends CI_Controller {
 
 	function create_user() {
 		$this -> load -> library('form_validation');
-
+		$this->form_validation->set_error_delimiters('<div class="alert alert-error">', '</div>');
 		// field name, error message, validation rules
 		$this -> form_validation -> set_rules('first_name', 'Name', 'trim|required');
 		$this -> form_validation -> set_rules('last_name', 'Last Name', 'trim|required');
@@ -44,9 +44,9 @@ class Login extends CI_Controller {
 			$data['main_content'] = 'signup_form';
 			$this -> load -> view('includes/template', $data);
 		} else {
-			$this -> load -> model('user_model');
+			$this -> load -> model('User_model');
 
-			if ($query = $this -> user_model -> create_user()) {
+			if ($query = $this -> User_model -> create_user()) {
 				redirect('home');
 			} else {
 				$data['main_content'] = 'signup_form';

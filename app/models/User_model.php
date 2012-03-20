@@ -22,7 +22,7 @@ class User_model extends CI_Model {
 			'password' => md5($this->input->post('password'))						
 		);
 		
-		$insert = $this->db->insert('user', $new_user_insert_data);
+		$insert = $this->db->insert('User', $new_user_insert_data);
 		return $insert;
 	}
 

@@ -5,26 +5,29 @@
 	<form class="form-horizontal">
 		<fieldset>
 			<div class="control-group">
-				<div class="controls">
-					<h1>Create an Account!</h1>
+				<div class="page-header">
+					<h1>Create an Account</h1>
 				</div>
 				<legend>
 					Personal Information
 				</legend>
 				<div class="controls" style="margin-bottom: 1em">
 					<?php
+					echo form_error('first_name');
 					$firstNameAttributes = array('id' => 'first_name', 'class' => 'input-xlarge', 'placeholder' => 'First Name', 'type' => 'text', 'name' => 'first_name');
 					echo form_input($firstNameAttributes);
 					?>
 				</div>
 				<div class="controls" style="margin-bottom: 1em">
 					<?php
+					echo form_error('last_name');
 					$lastNameAttributes = array('id' => 'last_name', 'class' => 'input-xlarge', 'placeholder' => 'Last Name', 'type' => 'text', 'name' => 'last_name');
 					echo form_input($lastNameAttributes);
 					?>
 				</div>
 				<div class="controls">
 					<?php
+					echo form_error('email_address');
 					$emailAttributes = array('id' => 'email_address', 'class' => 'input-xlarge', 'placeholder' => 'Email Address', 'type' => 'text', 'name' => 'email_address');
 					echo form_input($emailAttributes);
 					?>
@@ -38,18 +41,21 @@
 				</legend>
 				<div class="controls" style="margin-bottom: 1em">
 					<?php
+					echo form_error('username');
 					$usernameAttributes = array('id' => 'username', 'class' => 'input-xlarge', 'placeholder' => 'Username', 'type' => 'text', 'name' => 'username');
 					echo form_input($usernameAttributes);
 					?>
 				</div>
 				<div class="controls" style="margin-bottom: 1em">
 					<?php
+					echo form_error('password');
 					$passwordAttributes = array('id' => 'password', 'class' => 'input-xlarge', 'placeholder' => 'Password', 'type' => 'text', 'name' => 'password');
 					echo form_password($passwordAttributes);
 					?>
 				</div>
 				<div class="controls">
 					<?php
+					echo form_error('password2');
 					$passwordAttributes2 = array('id' => 'password2', 'class' => 'input-xlarge', 'placeholder' => 'Password Confirm', 'type' => 'text', 'name' => 'password2');
 					echo form_password($passwordAttributes2);
 					?>
@@ -63,7 +69,6 @@
 					?>
 				</div>
 			</div>
-			<?php echo validation_errors('<p class="error">');?>
 		</fieldset>
 	</form>
 	<?php
