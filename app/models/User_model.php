@@ -11,15 +11,15 @@ class User_model extends CI_Model {
 
 	}
 	
-	function create_user()
+	function create_user($first, $last, $email, $username, $password)
 	{
 		
 		$new_user_insert_data = array(
-			'first_name' => $this->input->post('first_name'),
-			'last_name' => $this->input->post('last_name'),
-			'email_address' => $this->input->post('email_address'),			
-			'username' => $this->input->post('username'),
-			'password' => md5($this->input->post('password'))						
+			'first_name' => $first,
+			'last_name' => $last,
+			'email_address' => $email,		
+			'username' => $user,
+			'password' => md5($password)						
 		);
 		
 		$insert = $this->db->insert('User', $new_user_insert_data);
