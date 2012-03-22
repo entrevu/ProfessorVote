@@ -56,8 +56,13 @@ class Login extends CI_Controller {
 			$this -> load -> view('includes/template', $data);
 		} else {
 			$this -> load -> model('User_model');
-
-			if ($query = $this -> User_model -> create_user()) {
+			$first_name = $this->input->post('first_name');
+			$last_name = $this->input->post('last_name');
+			$email_address = $this->input->post('email_address');			
+			$username = $this->input->post('username');
+			$password = $this->input->post('password');	
+				
+			if ($this -> User_model -> create_user($first_name, $last_name, $email_address, $username, $password)) {
 				redirect('home');
 			} else {
 				$data['main_content'] = 'signup_form';
