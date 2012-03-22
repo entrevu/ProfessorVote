@@ -21,7 +21,9 @@ class Login extends CI_Controller {
 			$this -> load -> view('includes/template', $data);
 		} else {
 			$this -> load -> model('User_model');
-			$query = $this -> User_model -> validate();
+			$username = $this -> input -> post('username'); 
+			$password = $this -> input -> post('password');
+			$query = $this -> User_model -> validate($username, $password);
 			if ($query)// if the user's credentials validated...
 			{
 				$data = array('username' => $this -> input -> post('username'), 'is_logged_in' => true);
