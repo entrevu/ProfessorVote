@@ -4,7 +4,9 @@
 		<meta charset="utf-8">
 		<title>"ProfessorVote.com"</title>
 		<!-- Le styles -->
-		<link href="../css/bootstrap.css" rel="stylesheet">
+		<link href="/css/bootstrap.css" rel="stylesheet">
+		<link href="/css/bootstrap-responsive.css" rel="stylesheet">
+		<link href="/Pulse/assets/css/pulse.css" rel="stylesheet">
 		<style>
 			body {
 				padding-top: 60px;
@@ -14,7 +16,6 @@
 				border: 0;
 			}
 		</style>
-		<link href="../css/bootstrap-responsive.css" rel="stylesheet">
 	</head>
 	<body>
 		<div class="navbar navbar-fixed-top">
@@ -30,7 +31,10 @@
 						0; margin-left: 15px">
 							<ul class="nav">
 								<li>
-									<a href="#register">Register</a>
+									<?php
+									$registerHeaderAttributes = array('id' => 'registerHeader');
+									echo anchor('login/signup', 'Register', $registerHeaderAttributes);
+									?>
 								</li>
 							</ul>
 							<ul class="nav">
