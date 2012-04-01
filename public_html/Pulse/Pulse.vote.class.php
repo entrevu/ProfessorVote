@@ -47,7 +47,11 @@ class Pulse {
 	 @scope public
 	 **/
 	public function votedBefore($item_id) {
-		if ($_COOKIE['pulse_item_' . $item_id] == 1) {// check sessions first; voted before
+		$cookie = $_COOKIE['ci_session'];
+		$cookie = stripslashes($cookie);
+		$cookie = unserialize($cookie);
+		$loggedin = $cookie["is_logged_in"];
+		if ($_COOKIE['pulse_item_' . $item_id] == 1 || !$loggedin) {// check sessions first; voted before
 			return true;
 		} else {// session says user hasn't voted yet. So check against IP
 			$cookie = $_COOKIE['ci_session'];
@@ -166,8 +170,7 @@ EOD;
 			$cookie = $_COOKIE['ci_session'];
 			$cookie = stripslashes($cookie);
 			$cookie = unserialize($cookie);
-			$user = $cookie["username"];
-			;
+			$user = $cookie["username"]; ;
 			$query = "INSERT INTO {$this->votes_table} (`item_id`, `vote_value`, `user`) VALUES ($item_id, 1, '$user')";
 			$result = mysql_query($query);
 			if (mysql_affected_rows() == 1) {// vote done
@@ -191,8 +194,7 @@ EOD;
 			$cookie = $_COOKIE['ci_session'];
 			$cookie = stripslashes($cookie);
 			$cookie = unserialize($cookie);
-			$user = $cookie["username"];
-			;
+			$user = $cookie["username"]; ;
 			$query = "INSERT INTO {$this->votes_table} (`item_id`, `vote_value`, `user`) VALUES ($item_id, -1, '$user')";
 			$result = mysql_query($query);
 			if (mysql_affected_rows() == 1) {// vote done
