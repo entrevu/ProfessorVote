@@ -18,7 +18,7 @@ class User_model extends CI_Model {
 			'first_name' => $first,
 			'last_name' => $last,
 			'email_address' => $email,		
-			'username' => $user,
+			'username' => $username,
 			'password' => md5($password)						
 		);
 		
