@@ -11,5 +11,16 @@ class College_model extends CI_Model {
             return $data;
         }
     }
+	function collegeExists($college){
+		$q = $this -> db -> get('College');
+        if ($q -> num_rows() > 0) {
+            foreach ($q->result() as $row) {
+                if($row->Name==$college){
+                return TRUE;	
+                }
+            }
+			return FALSE;
+        }
+	}
 
 }
