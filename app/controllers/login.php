@@ -15,13 +15,15 @@ class Login extends CI_Controller {
 		$this -> form_validation -> set_error_delimiters('<div class="alert alert-error">', '</div>');
 		$this -> form_validation -> set_rules('username', 'Username', 'trim|required|min_length[4]');
 		$this -> form_validation -> set_rules('password', 'Password', 'trim|required|min_length[4]|max_length[32]');
-		
+
 		if ($this -> form_validation -> run() == FALSE) {
 			$data['main_content'] = 'login_form';
 			$this -> load -> view('includes/template', $data);
 		} else {
 			$this -> load -> model('User_model');
-			$query = $this -> User_model -> validate();
+			$username = $this -> input -> post('username'); 
+			$password = $this -> input -> post('password');
+			$query = $this -> User_model -> validate($username, $password);
 			if ($query)// if the user's credentials validated...
 			{
 				$data = array('username' => $this -> input -> post('username'), 'is_logged_in' => true);
@@ -70,6 +72,11 @@ class Login extends CI_Controller {
 			}
 		}
 
+	}
+
+	function logout() {
+		$this -> session -> sess_destroy();
+		redirect('home');
 	}
 
 }

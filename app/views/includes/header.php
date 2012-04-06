@@ -21,32 +21,47 @@
 		<div class="navbar navbar-fixed-top">
 			<div class="navbar-inner">
 				<div class="container">
-					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a>
 					<?php
 					$homeHeaderAttributes = array('id' => 'homeHeader', 'class' => 'brand');
 					echo anchor('home', 'ProfessorVote.com', $homeHeaderAttributes);
 					?>
-					<div class="nav-collapse">
-						<form class="form-inline pull-right" style="display: inline; margin-bottom:
-						0; margin-left: 15px">
-							<ul class="nav">
-								<li>
-									<?php
-									$registerHeaderAttributes = array('id' => 'registerHeader');
-									echo anchor('login/signup', 'Register', $registerHeaderAttributes);
+					<form class="form-inline pull-right" style="display: inline; margin-bottom:
+					0; margin-left: 15px">
+						<?php if($this->session->userdata('is_logged_in') == FALSE) {
+						?>
+						<ul class="nav">
+							<li>
+								<?php
+								$registerHeaderAttributes = array('id' => 'registerHeader');
+								echo anchor('login/signup', 'Register', $registerHeaderAttributes);
+								?>
+							</li>
+						</ul>
+						<ul class="nav">
+							<li>
+								<?php
+								$loginHeaderAttributes = array('id' => 'loginHeader');
+								echo anchor('login', 'Login', $loginHeaderAttributes);
+								?>
+							</li>
+						</ul>
+						<?php } else {?>
+						<ul class="nav">
+							<li>
+								<small class="navbar-text">User: <?=anchor('profile', $this->session->userdata('username'))
 									?>
-								</li>
-							</ul>
-							<ul class="nav">
-								<li>
-									<?php
-									$loginHeaderAttributes = array('id' => 'loginHeader');
-									echo anchor('login', 'Login', $loginHeaderAttributes);
-									?>
-								</li>
-							</ul>
-						</form>
-					</div><!--/.nav-collapse -->
+							</li>
+						</ul>
+						<ul class="nav">
+							<li>
+								<?php
+								$logoutAttributes = array('id' => 'logout', 'class' => 'btn');
+								echo anchor('login/logout', 'Logout', $logoutAttributes);
+								?>
+								<?php }?>
+							</li>
+						</ul>
+					</form>
 				</div>
 			</div>
 		</div>
