@@ -2,10 +2,10 @@
 	<?php    if (isset($isConfirm)) {  ?>
 					<div class="alert alert-success"><p> College Successfully Added! </p></div>
 					
-					<?php } ?>
+					<?php }
+	echo $list ?>
 					
 					ADD COLLEGE VIEW AREA
 					
-					<h1>College ID: <?php echo $collegeID ?></h1>
-				
+									
 </div>

@@ -22,5 +22,17 @@ class College_model extends CI_Model {
 			return FALSE;
         }
 	}
+	function loadCollegeList($letter){
+		//make sure $letter is a letter
+		$this->load->library('Util');
+		$fields = array(0=>'Name',1=>'State',2=>'City');
+		
+
+		$q= $this->db->like('Name', $letter,'after');
+		$q= $this->db->get('College');
+		$html = $this->util->make_table($fields,$q);
+		return $html;
+
+	}
 
 }
