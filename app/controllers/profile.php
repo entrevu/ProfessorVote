@@ -1,21 +1,16 @@
 <?php
 
-class ProfilePage extends CI_Controller{
-	
-	function profile()
-	{
-		parent::CI_Controller;
-	}
-	
+class Profile extends CI_Controller
+{	
 	function index()
 	{
 		$data['main_content'] = 'ProfilePageView';
-		$this->load->view('includes/template', $data);
+		$this -> load -> view('includes/template', $data);
 	}
 	
-	function show()
+	function view_profile($username)
 	{
-		$id = $this -> uri -> segment(3);
+		$username = $this -> uri -> segment(3);
 		$query = $this -> User_model -> fetch_user($username);
 		
 		if ($query -> num_rows() == 1)
@@ -33,15 +28,17 @@ class ProfilePage extends CI_Controller{
 		$this -> load -> view('ProfilePageView', $data);
 	}
 	
-	function edit()
+	function edit_profile($username)
 	{
-		$id = $this -> uri -> segment(3);
+		$username = $this -> uri -> segment(3);
 		
-		if (belongsToGroup('User') && $id === $this -> db_session -> userdata('id'))
+		if ($username == $this -> db_session -> userdata('username'))
 		{
 			$rules['password'] = 'trim|xss_clean|callback__password_check';
 			$rules['password_confirm'] = 'trim|xss_clean|matches[password]';
 			$rules['email_address'] = 'trim|required|valid_email|xss_clean|callback__email_duplicate_check';
+			$rules['first_name'] = 'trim';
+			$rules['last_name'] = 'trim';
 		}
 		
 		else

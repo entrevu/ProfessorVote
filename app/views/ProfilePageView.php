@@ -1,15 +1,15 @@
 <div class="container">
-	<div class="content">
+	<div class="hero-unit raised">
 		<div class="page-header">
-			<h1>User Profile for <?=$user['username']?></h1>
+			<h1>User Profile for <?=$profile['username']?></h1>
 		</div>
 		
-		<p><?=anchor('ProfilePage/edit/'.$user['id'], 'EDIT')?></p>
+		<p><?=anchor('/profile/edit/'.$profile['username'], 'EDIT')?></p>
 		<ul>
-			<li>Username: <?=$user['username']?></li>
-			<li>Email Address: <?=$user['email_address']?></li>
-			<li>First Name: <?=$user['first_name']?></li>
-			<li>Last Name: <?=$user['last_name']?></li>
+			<li>Username: <?=$profile['username']?></li>
+			<li>Email Address: <?=$profile['email_address']?></li>
+			<li>First Name: <?=$profile['first_name']?></li>
+			<li>Last Name: <?=$profile['last_name']?></li>
 		</ul>
 	</div>
 </div>
