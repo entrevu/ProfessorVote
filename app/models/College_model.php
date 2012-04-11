@@ -1,7 +1,7 @@
 <?php
 
 class College_model extends CI_Model {
-    
+
     function getAll() {
         $q = $this -> db -> get('College');
         if ($q -> num_rows() > 0) {
@@ -11,34 +11,29 @@ class College_model extends CI_Model {
             return $data;
         }
     }
-	function collegeExists($college){
-		$q = $this -> db -> get('College');
+
+    function collegeExists($college) {
+        $q = $this -> db -> get('College');
         if ($q -> num_rows() > 0) {
             foreach ($q->result() as $row) {
-                if($row->Name==$college){
-                return TRUE;	
+                if ($row -> Name == $college) {
+                    return TRUE;
                 }
             }
-			return FALSE;
+            return FALSE;
         }
-	}
-	
-	function collegeStateExists($college, $state){ // function to see if there is a college of a certain name that already exists in a state.
-		$q = $this -> db -> query("SELECT * FROM `COLLEGE` Where Name = '".$college."' AND State = '".$state."'");
-        if ($q -> num_rows() > 0) {
-            return TRUE;
-        }
-		else{
-		return FALSE;
-		}
-	}
-	
-	function create_college($college_name, $state, $city) {
+    }
 
-		$new_college_insert_data = array('name' => $college_name, 'city' => $city, 'state' => $state);
+    function loadCollegeList($letter) {
+        //make sure $letter is a letter
+        $this -> load -> library('Util');
+        $fields = array(0 => 'Name', 1 => 'State', 2 => 'City');
 
-		$insert = $this -> db -> insert('College', $new_college_insert_data);
-		return $insert;
-	}
+        $q = $this -> db -> like('Name', $letter, 'after');
+        $q = $this -> db -> get('College');
+        $html = $this -> util -> make_table($fields, $q);
+        return $html;
+
+    }
 
 }
