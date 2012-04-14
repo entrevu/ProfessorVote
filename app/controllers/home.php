@@ -23,7 +23,5 @@ class home extends CI_Controller {
 	
 	// now default page for the user use the cache to find the page checks if already selected
 	
-	
-	
 }
 

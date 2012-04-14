@@ -29,6 +29,16 @@
 					<div class="nav-collapse">
 						<form class="form-inline pull-right" style="display: inline; margin-bottom:
 						0; margin-left: 15px">
+						
+							<ul class="nav">
+								<li>
+									<?php
+									$aboutusHeaderAttributes = array('id' => 'aboutusHeader');
+									echo anchor('About', 'About Us', $aboutusHeaderAttributes);
+									?>
+								</li>
+							</ul>
+							
 							<ul class="nav">
 								<li>
 									<?php
@@ -37,6 +47,7 @@
 									?>
 								</li>
 							</ul>
+							
 							<ul class="nav">
 								<li>
 									<?php
