@@ -6,6 +6,15 @@
 			ProfessorVote.com is a new and unique way of rating your College professors and getting a quick and easy view of the best professors at your school. We are currently under development
 			so please stand by as we will be fully operational in two months.
 		</p>
+		
+		
+		<!-- states loaded in alphabetical order
+		<?php foreach($rows as $r) : ?>
+		
+		<h1><?php echo $r->title; ?></h1>
+		<div><?php echo $r->contents; ?></div> 
+		
+		<?php endforeach; ?> -->
 	</div>
 </div>
 <!-- /container -->
